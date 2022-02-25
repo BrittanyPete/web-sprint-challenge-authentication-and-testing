@@ -54,6 +54,27 @@ Your finished project must include all of the following requirements (further in
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+
+    * Sessions: sessions are stored on the server and passed in requests through session cookies. While a user is logged in, the cookie is sent to the server with every request. It allows the server to compare the session id from the cookie against the information that is stored in memory to verify the users identity, then sends a response with the corresponding state.
+
+    * JSON Web Tokens: There are three parts to a JSON web token. 
+        A. Header: The header contains the algorithm with the token type.
+        B. Payload: Includes 'claims' information, or any other data we want to store in the token. For example, we can store the users permissions in the token.
+        C. Signature: A signature is created by creating a string where we encode the header and payload together, and then sign it with a secret.
+        --When we combine all three parts, we get a JWT!
+
+    The biggest difference between the two is that for sessions, the users state is stored on the server. Whereas, the user state for JWT is stored inside the token on the client side instead.
+
 2. What does `bcryptjs` do to help us store passwords in a secure manner?
+
+    bcryptjs allows us to hash passwords, and as the developer, we can determine how many rounds of hashing we want to perform. It makes it a lot harder for hackers to be able to obtain access.
+
 3. How are unit tests different from integration and end-to-end testing?
+
+    Unit tests test singular units of code. They are faster and easier to write. They focus solely on one small section of code at a time.
+    Integration tests test how different components are able to work together. 
+    End to end tests test the full application from beginning to end, mimicking how an end user would use the application. 
+
 4. How does _Test Driven Development_ change the way we write applications and tests?
+
+    Test driven development is where we write the tests first, and write the code second. We focus on the outcome we want first, and then write the code to pass the outcome we desire.
