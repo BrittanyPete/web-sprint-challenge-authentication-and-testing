@@ -9,14 +9,19 @@ const getById = (id) => {
     .where('id', id).first()
 }
 
+const findBy = (filter) => {
+    return db('users')
+    .where(filter)
+}
+
 const add = async (user) => {
     const [id] = await db('users').insert(user)
-    console.log(getById(id))
     return getById(id)
 }
 
 module.exports = {
     getAll,
     getById,
+    findBy,
     add
 }
